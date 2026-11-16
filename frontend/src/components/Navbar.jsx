@@ -12,11 +12,18 @@ const Navbar = () => {
 
   return (
     <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
-      <Link to="/" className="text-2xl font-bold">Your apps name</Link>
+      <Link to="/" className="text-2xl font-bold">Room Booking</Link>
       <div>
         {user ? (
           <>
-            <Link to="/tasks" className="mr-4">CRUD</Link>
+            <Link to="/book" className="mr-4">Book a Room</Link>
+            <Link to="/my-bookings" className="mr-4">My Bookings</Link>
+            {user.role === 'admin' && (
+              <>
+                <Link to="/admin/rooms" className="mr-4">Manage Rooms</Link>
+                <Link to="/admin/bookings" className="mr-4">All Bookings</Link>
+              </>
+            )}
             <Link to="/profile" className="mr-4">Profile</Link>
             <button
               onClick={handleLogout}
